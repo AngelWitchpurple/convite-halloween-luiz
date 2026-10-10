@@ -4,19 +4,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#080510">
-<title>Luiz Eduardo | 17 anos — Halloween Místico</title>
+<meta name="theme-color" content="#090207">
+<title>Luiz Eduardo | 17 anos — Halloween Sangrento</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Creepster&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700;800&display=swap');
-
 :root {
-  --black: #080510;
-  --purple: #8b2be2;
-  --violet: #c084fc;
-  --lilac: #ead7ff;
-  --silver: #e8e5ef;
-  --muted: #b8abc9;
+  --black: #090207;
+  --dark: #16040d;
+  --blood: #a80020;
+  --red: #f01842;
+  --bright: #ff3457;
+  --purple: #8117bd;
+  --violet: #c16aff;
+  --silver: #f4eaf1;
+  --muted: #c5aebc;
 }
 
 * { box-sizing: border-box; }
@@ -30,11 +35,26 @@ body {
   margin: 0;
   color: var(--silver);
   background:
-    radial-gradient(ellipse at 50% 0%, #35104d 0%, transparent 42%),
-    radial-gradient(ellipse at 10% 60%, #1c0b31 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 0%, #41051c 0%, transparent 45%),
+    radial-gradient(ellipse at 0% 55%, #300943 0%, transparent 38%),
+    radial-gradient(ellipse at 100% 85%, #510016 0%, transparent 35%),
     var(--black);
   font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .18;
+  background-image:
+    radial-gradient(#ffb5c4 1px, transparent 1px),
+    radial-gradient(#b55bff 1px, transparent 1px);
+  background-size: 67px 67px, 113px 113px;
+  background-position: 0 0, 32px 45px;
 }
 
 #stars {
@@ -43,146 +63,223 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
+  opacity: .65;
 }
 
 .wrap {
-  width: min(1050px, 90%);
+  width: min(1080px, 90%);
   margin: auto;
 }
 
 .hero {
   min-height: 100svh;
-  padding: 65px 18px;
+  padding: 70px 18px 90px;
   display: grid;
   place-items: center;
   text-align: center;
   position: relative;
   overflow: hidden;
   isolation: isolate;
+  background:
+    linear-gradient(180deg, #09020766, #09020718 65%, #090207);
 }
 
-.portal {
-  position: absolute;
-  z-index: -1;
-  width: min(80vw, 510px);
-  aspect-ratio: 1;
-  border: 1px solid #d8b4fe88;
-  border-radius: 50%;
-  box-shadow:
-    0 0 25px #a855f755,
-    0 0 80px #7e22ce33,
-    inset 0 0 75px #7e22ce44;
-  animation: pulse 6s ease-in-out infinite;
-}
-
-.portal::before,
-.portal::after {
+.hero::before {
   content: "";
   position: absolute;
-  inset: 8%;
-  border: 1px solid #e9d5ff66;
-  border-radius: 43% 57% 51% 49%;
-  transform: rotate(35deg);
+  inset: 0 0 auto;
+  height: 100px;
+  z-index: 2;
+  opacity: .95;
+  background:
+    radial-gradient(ellipse at 5% 0%, #f01842 0 3%, transparent 4%),
+    radial-gradient(ellipse at 20% 0%, #870018 0 6%, transparent 7%),
+    radial-gradient(ellipse at 44% 0%, #d1002d 0 4%, transparent 5%),
+    radial-gradient(ellipse at 71% 0%, #9d0025 0 7%, transparent 8%),
+    radial-gradient(ellipse at 94% 0%, #f01842 0 4%, transparent 5%);
+  pointer-events: none;
 }
 
-.portal::after {
-  inset: 16%;
-  transform: rotate(-28deg);
-  border-color: #c084fc66;
+.drips {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 130px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.drips span {
+  position: absolute;
+  top: -20px;
+  width: 13px;
+  height: 55px;
+  background: linear-gradient(#f01842, #750019);
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 0 13px #d9003244;
+}
+
+.drips span:nth-child(1) { left: 8%; height: 75px; }
+.drips span:nth-child(2) { left: 17%; height: 35px; width: 8px; }
+.drips span:nth-child(3) { left: 31%; height: 95px; width: 11px; }
+.drips span:nth-child(4) { left: 48%; height: 45px; }
+.drips span:nth-child(5) { left: 62%; height: 80px; width: 9px; }
+.drips span:nth-child(6) { left: 79%; height: 50px; }
+.drips span:nth-child(7) { left: 91%; height: 100px; width: 12px; }
+
+.bat {
+  position: absolute;
+  font-size: 28px;
+  opacity: .7;
+  color: #ff234b;
+  filter: drop-shadow(0 0 10px #ff003c);
+  animation: fly 7s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.bat.one { left: 8%; top: 26%; }
+.bat.two { right: 9%; top: 35%; animation-delay: -3s; font-size: 38px; }
+.bat.three { left: 15%; bottom: 17%; animation-delay: -2s; }
+
+.hero-inner {
+  position: relative;
+  z-index: 4;
+  max-width: 850px;
 }
 
 .moon {
-  font-size: 64px;
-  color: white;
-  text-shadow: 0 0 30px #d8b4fe;
-  margin-bottom: 12px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  margin: 20px auto 28px;
+  display: grid;
+  place-items: center;
+  font-size: 82px;
+  color: #fff0f3;
+  background:
+    radial-gradient(circle at 35% 30%, #ff8ba1, #bd0029 50%, #45000e 78%);
+  box-shadow:
+    0 0 25px #ff003b77,
+    0 0 80px #b0003b66,
+    inset -15px -12px 25px #23000d;
+  animation: moonPulse 4s ease-in-out infinite;
 }
 
 .eyebrow {
-  color: var(--violet);
+  color: var(--bright);
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 4px;
   text-transform: uppercase;
-  line-height: 1.9;
+  line-height: 2;
+  text-shadow: 0 0 15px #f0184277;
 }
 
 .hero h1 {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(48px, 10vw, 100px);
-  line-height: 1;
-  letter-spacing: 2px;
-  margin: 24px 0 15px;
-  background: linear-gradient(120deg, white, #d8b4fe 35%, #f8f5ff 55%, #a855f7);
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  filter: drop-shadow(0 0 20px #a855f744);
+  font-family: 'Creepster', 'Cinzel', serif;
+  font-size: clamp(65px, 13vw, 135px);
+  line-height: .88;
+  letter-spacing: 3px;
+  margin: 24px 0;
+  color: #fff0f4;
+  text-shadow:
+    0 2px 0 #7d001c,
+    0 5px 0 #4a0011,
+    0 0 12px #ff1744,
+    0 0 45px #b00032;
 }
 
 .age {
+  display: inline-block;
   font-family: 'Cinzel', serif;
-  letter-spacing: 12px;
-  font-size: clamp(18px, 4vw, 27px);
-  margin: 20px 0;
+  font-weight: 800;
+  font-size: clamp(22px, 5vw, 36px);
+  letter-spacing: 9px;
+  margin: 12px 0 20px;
+  padding: 13px 22px;
+  border-top: 1px solid #f0184288;
+  border-bottom: 1px solid #f0184288;
+  color: #ffdce5;
+  text-shadow: 0 0 18px #f01842;
 }
 
 .hero p {
-  max-width: 570px;
+  max-width: 620px;
   margin: 18px auto 28px;
   line-height: 1.9;
-  color: #e1d7ed;
+  color: #ead6df;
   font-size: 14px;
+}
+
+.hero .intro-big {
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero .subtitle {
+  font-family: 'Cinzel', serif;
+  color: #f8bfd0;
+  font-size: clamp(17px, 3vw, 23px);
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  border: 1px solid #d8b4fe;
-  border-radius: 50px;
-  padding: 15px 23px;
-  background: linear-gradient(120deg, #521783, #9138d1, #58218c);
+  gap: 9px;
+  border: 1px solid #ff6884;
+  border-radius: 5px;
+  padding: 16px 25px;
+  background: linear-gradient(135deg, #b4002b, #6f0024 60%, #400016);
   color: white;
   text-decoration: none;
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
   font-size: 12px;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   cursor: pointer;
-  box-shadow: 0 0 25px #9333ea44;
+  box-shadow: 0 0 25px #ed003d33, inset 0 0 15px #ff234422;
   transition: .25s;
 }
 
 .btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 0 35px #c084fc88;
+  background: linear-gradient(135deg, #f01842, #920027);
+  box-shadow: 0 0 35px #f0184288;
 }
 
 .btn.secondary {
-  background: #ffffff08;
-  border-color: #a99ab9;
+  background: #140711;
+  border-color: #8f6b86;
   box-shadow: none;
 }
 
-section { padding: 80px 0; }
+section {
+  position: relative;
+  z-index: 1;
+  padding: 82px 0;
+}
 
 .section-title {
   font-family: 'Cinzel', serif;
-  font-size: clamp(28px, 5vw, 44px);
+  font-size: clamp(27px, 5vw, 44px);
   text-align: center;
-  margin: 12px 0 18px;
+  margin: 14px 0 20px;
+  color: #fff0f4;
+  text-shadow: 0 0 22px #e0003c55;
 }
 
 .intro {
-  max-width: 650px;
+  max-width: 680px;
   text-align: center;
   color: var(--muted);
   line-height: 1.9;
   font-size: 14px;
-  margin: 0 auto 35px;
+  margin: 0 auto 38px;
 }
 
 .center { text-align: center; }
@@ -190,72 +287,132 @@ section { padding: 80px 0; }
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 17px;
+  gap: 18px;
 }
 
 .card {
-  background: linear-gradient(145deg, #21132fe8, #0c0815ee);
-  border: 1px solid #c084fc44;
-  border-radius: 20px;
-  padding: 27px 22px;
-  box-shadow: 0 15px 40px #0003;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(145deg, #28101df2, #10070ef7 70%),
+    var(--dark);
+  border: 1px solid #a51b4566;
+  border-radius: 5px;
+  padding: 31px 22px;
+  text-align: center;
+  box-shadow: 0 15px 40px #0006, inset 0 0 30px #a1002411;
+  transition: .3s;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #ff1744, #8a21c5, transparent);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #ff3457;
+  box-shadow: 0 15px 45px #d0003222;
 }
 
 .card-icon {
-  font-size: 30px;
-  margin-bottom: 16px;
-  color: var(--lilac);
+  font-size: 36px;
+  margin-bottom: 15px;
+  color: #ff4d70;
+  filter: drop-shadow(0 0 12px #ff174455);
 }
 
 .card h3 {
-  color: var(--violet);
+  color: #ff5878;
   font-size: 11px;
   letter-spacing: 3px;
   text-transform: uppercase;
 }
 
 .card p {
-  line-height: 1.8;
+  line-height: 1.9;
   font-size: 14px;
   overflow-wrap: anywhere;
 }
 
+.card strong {
+  color: white;
+  font-size: 16px;
+}
+
 .small {
-  color: #c3b5d1;
+  color: #c3a7b6;
   font-size: 11px;
 }
 
 .quote {
   font-family: 'Cinzel', serif;
   text-align: center;
-  color: #e9d5ff;
+  color: #ffd0dd;
   font-size: clamp(18px, 3vw, 25px);
-  line-height: 1.7;
-  max-width: 700px;
-  margin: 50px auto;
+  line-height: 1.8;
+  max-width: 750px;
+  margin: 55px auto 0;
+  text-shadow: 0 0 20px #d0003c55;
+}
+
+.quote::before {
+  content: "☠  ";
+  color: #f01842;
+}
+
+.quote::after {
+  content: "  ☠";
+  color: #f01842;
+}
+
+.divider {
+  width: 230px;
+  height: 1px;
+  margin: 42px auto;
+  background: linear-gradient(90deg, transparent, #f01842, #a855f7, transparent);
 }
 
 .rules {
-  padding: clamp(25px, 6vw, 48px);
-  border: 1px solid #d8b4fe99;
-  border-radius: 25px;
+  position: relative;
+  overflow: hidden;
+  padding: clamp(27px, 6vw, 50px);
+  border: 1px solid #e3295266;
+  border-radius: 6px;
   background:
-    radial-gradient(ellipse at 100% 0%, #8426b644, transparent 50%),
-    linear-gradient(140deg, #1b1028, #0b0812);
-  box-shadow: 0 0 45px #7e22ce22;
+    radial-gradient(ellipse at 100% 0%, #a0003433, transparent 50%),
+    radial-gradient(ellipse at 0% 100%, #67129b22, transparent 45%),
+    linear-gradient(140deg, #200914, #0b050a);
+  box-shadow: 0 0 45px #7e002522, inset 0 0 45px #a1002011;
+}
+
+.rules::after {
+  content: "✦";
+  position: absolute;
+  right: 20px;
+  top: 12px;
+  color: #f01842;
+  font-size: 35px;
+  opacity: .7;
 }
 
 .rules h2 {
   font-family: 'Cinzel', serif;
   text-align: center;
   font-size: clamp(22px, 4vw, 32px);
-  color: var(--lilac);
+  color: #ffd5df;
 }
 
 .rules p {
-  font-size: clamp(15px, 2.8vw, 18px);
+  font-size: clamp(14px, 2.8vw, 17px);
   line-height: 2;
   text-align: center;
+  color: #e5cbd7;
 }
 
 .name-label {
@@ -272,17 +429,17 @@ input {
   width: 100%;
   padding: 15px;
   margin-top: 8px;
-  border-radius: 12px;
-  border: 1px solid #8c6aa8;
-  background: #100a19;
+  border-radius: 4px;
+  border: 1px solid #74364f;
+  background: #10070e;
   color: white;
   font: inherit;
   outline: none;
 }
 
 input:focus {
-  border-color: #d8b4fe;
-  box-shadow: 0 0 0 3px #a855f733;
+  border-color: #ff3457;
+  box-shadow: 0 0 0 3px #a8002033;
 }
 
 .actions {
@@ -296,7 +453,7 @@ input:focus {
 #feedback {
   min-height: 45px;
   text-align: center;
-  color: var(--lilac);
+  color: #ffb4c6;
   font-size: 13px;
   line-height: 1.8;
 }
@@ -304,23 +461,26 @@ input:focus {
 .note {
   text-align: center;
   font-size: 11px;
-  color: #b8a9c8;
+  color: #bda5b4;
   line-height: 1.8;
 }
 
-.divider {
-  width: 220px;
-  height: 1px;
-  margin: 40px auto;
-  background: linear-gradient(90deg, transparent, #d8b4fe, transparent);
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #a88a9b;
+  padding: 40px 15px 50px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  border-top: 1px solid #6f183044;
+  background: #08020788;
 }
 
-footer {
-  text-align: center;
-  color: #a99ab9;
-  padding: 35px 15px 45px;
-  font-size: 11px;
-  letter-spacing: 1px;
+footer strong {
+  display: inline-block;
+  color: #ff4568;
+  margin-bottom: 12px;
 }
 
 .music {
@@ -328,27 +488,35 @@ footer {
   right: 14px;
   bottom: 14px;
   z-index: 10;
-  padding: 11px 15px;
+  padding: 12px 16px;
   color: white;
-  background: #170d24;
-  border: 1px solid #a855f7;
-  border-radius: 30px;
+  background: #190711;
+  border: 1px solid #c22250;
+  border-radius: 4px;
   cursor: pointer;
   font-family: inherit;
   font-size: 11px;
+  box-shadow: 0 0 18px #a0002422;
 }
 
-@keyframes pulse {
-  0%, 100% { transform: scale(.98); opacity: .7; }
-  50% { transform: scale(1.03); opacity: 1; }
+@keyframes moonPulse {
+  0%, 100% { transform: scale(1); filter: brightness(.95); }
+  50% { transform: scale(1.045); filter: brightness(1.15); }
+}
+
+@keyframes fly {
+  0% { transform: translate(0, 0) rotate(-8deg); }
+  50% { transform: translate(22px, -18px) rotate(7deg); }
+  100% { transform: translate(-12px, 12px) rotate(-5deg); }
 }
 
 @media (max-width: 700px) {
   .cards { grid-template-columns: 1fr; }
   section { padding: 60px 0; }
-  .hero { min-height: 92svh; }
-  .portal { width: 92vw; }
+  .hero { min-height: 95svh; padding-top: 90px; }
+  .moon { width: 105px; height: 105px; font-size: 67px; }
   .actions .btn { width: 100%; }
+  .bat { font-size: 22px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -365,136 +533,167 @@ footer {
 <canvas id="stars" aria-hidden="true"></canvas>
 
 <header class="hero" id="inicio">
-  <div class="portal" aria-hidden="true"></div>
+  <div class="drips" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+  </div>
 
-  <div class="wrap">
-    <div class="moon">☾</div>
-    <div class="eyebrow">Um chamado do outro lado do véu</div>
+  <div class="bat one" aria-hidden="true">🦇</div>
+  <div class="bat two" aria-hidden="true">🦇</div>
+  <div class="bat three" aria-hidden="true">🦇</div>
 
-    <p>VOCÊ FOI CONVOCADO PARA UMA NOITE FORA DESTE MUNDO.</p>
+  <div class="hero-inner">
+    <div class="eyebrow">☠ Você foi convocado ☠</div>
+    <div class="moon" aria-hidden="true">☾</div>
+
+    <p class="intro-big">Uma noite de sombras, magia e pecado visual...</p>
 
     <h1>LUIZ<br>EDUARDO</h1>
 
     <div class="age">17 ANOS</div>
-    <div class="eyebrow">Halloween Místico</div>
 
-    <p>
-      Uma noite. Um portal. Uma nova era.<br>
-      Nem toda magia pertence aos contos de fadas.
+    <div class="eyebrow">HALLOWEEN • DARK MAGIC • BLOOD MOON</div>
+
+    <p class="subtitle">
+      A noite em que o sobrenatural ganha vida.
     </p>
 
-    <a class="btn" href="#convite">✧ ATRAVESSAR O PORTAL ✧</a>
+    <p>
+      Bruxas, mistérios, criaturas da noite e uma energia que
+      você não vai encontrar em nenhum outro lugar.
+      Vista sua melhor versão sombria e venha fazer parte dessa história.
+    </p>
+
+    <a class="btn" href="#convite">🩸 ENTRAR NO MEU PESADELO 🩸</a>
   </div>
 </header>
 
 <main id="convite">
-<section>
-  <div class="wrap">
-    <div class="eyebrow center">O chamado</div>
-    <h2 class="section-title">Sua presença foi invocada.</h2>
+  <section>
+    <div class="wrap">
+      <div class="eyebrow center">✦ O convite está selado ✦</div>
 
-    <p class="intro">
-      Uma noite entre sombras, estrelas e mistérios.
-      Prepare-se para atravessar os limites do comum.
-    </p>
+      <h2 class="section-title">A noite te escolheu.</h2>
 
-    <div class="cards">
-      <article class="card">
-        <div class="card-icon">✧</div>
-        <h3>Data</h3>
+      <p class="intro">
+        Uma celebração de 17 anos com uma mistura de Halloween,
+        magia cósmica, estética gótica e um toque de caos.
+        Você está na lista de convidados... agora só falta aparecer.
+      </p>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon">🩸</div>
+          <h3>A noite marcada</h3>
+          <p>
+            <strong>17 DE OUTUBRO DE 2026</strong><br>
+            <span class="small">Sábado • Prepare seu look mais sombrio</span>
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🕯️</div>
+          <h3>Hora da invocação</h3>
+          <p>
+            <strong>19H</strong><br>
+            <span class="small">Não deixe a noite começar sem você.</span>
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🦇</div>
+          <h3>Onde fica o portal</h3>
+          <p>
+            <strong>Bairro Júlia Terra</strong><br>
+            Rua Ely Abrate, nº 112
+          </p>
+        </article>
+      </div>
+
+      <div class="quote">
+        Dezessete anos. Uma nova era. Nenhuma intenção de ser comum.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="rules">
+        <div class="eyebrow center">☠ Antes de atravessar o portal ☠</div>
+        <h2>REGRAS DA NOITE</h2>
+
         <p>
-          <strong>DATA A CONFIRMAR</strong><br>
-          <span class="small">
-            A data informada foi 17/10/2009.
-            Confira o dia e o ano antes de divulgar o convite.
-          </span>
+          🖤 Cada convidado deve trazer a comida e a bebida
+          que for consumir durante a festa.<br>
+          🖤 Cada um é responsável pelo que vai comer e beber.<br>
+          🖤 Venha preparado para uma noite inesquecível!
         </p>
-      </article>
 
-      <article class="card">
-        <div class="card-icon">◷</div>
-        <h3>Horário</h3>
-        <p>19h</p>
-      </article>
-
-      <article class="card">
-        <div class="card-icon">⌖</div>
-        <h3>Local do portal</h3>
-        <p>Bairro Júlia Terra<br>Rua Ely Abrate, nº 112</p>
-      </article>
+        <p style="color:#ff6884;font-weight:800;">
+          Combinado? A noite promete. 🩸
+        </p>
+      </div>
     </div>
+  </section>
 
-    <div class="quote">
-      “17 anos de mistério, magia e novas possibilidades.”
-    </div>
-  </div>
-</section>
+  <section>
+    <div class="wrap">
+      <div class="eyebrow center">✦ O destino está em suas mãos ✦</div>
 
-<section>
-  <div class="wrap">
-    <div class="rules">
-      <div class="eyebrow center">Aviso importante</div>
-      <h2>✧ REGRINHAS DO PORTAL ✧</h2>
+      <h2 class="section-title">
+        Você vai sobreviver à noite?
+      </h2>
 
-      <p>
-        Para entrar nessa noite mágica, cada convidado deve trazer
-        a comida e a bebida que for consumir durante a festa.
-        Cada um é responsável pelo que vai comer e beber.
-        Combinado? 🖤
+      <p class="intro">
+        Quero você comigo nessa celebração.
+        Confirme sua presença e faça parte do Halloween
+        dos meus 17 anos. 🦇
+      </p>
+
+      <label class="name-label" for="guestName">
+        Seu nome (opcional)
+        <input
+          id="guestName"
+          type="text"
+          maxlength="80"
+          placeholder="Escreva seu nome aqui..."
+        >
+      </label>
+
+      <div class="actions">
+        <button class="btn" id="yesBtn" type="button">
+          🩸 SIM, EU VOU!
+        </button>
+
+        <button class="btn secondary" id="noBtn" type="button">
+          🥀 NÃO VOU CONSEGUIR
+        </button>
+      </div>
+
+      <p id="feedback" role="status" aria-live="polite"></p>
+
+      <p class="note">
+        Ao escolher uma opção, o WhatsApp abrirá com a mensagem pronta.
+        Você só precisa tocar em “Enviar” para concluir sua resposta.
+      </p>
+
+      <div class="divider"></div>
+
+      <p class="quote">Até lá... cuidado com o que você invoca.</p>
+
+      <p class="note">
+        Prepare seu look, reúna sua coragem e não perca a hora.
       </p>
     </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="eyebrow center">O portal aguarda sua resposta</div>
-
-    <h2 class="section-title">
-      Você vai atravessar esse portal?
-    </h2>
-
-    <p class="intro">
-      Sua presença faz parte dessa noite.
-      Estou contando com você para tornar meus 17 anos inesquecíveis!
-    </p>
-
-    <label class="name-label" for="guestName">
-      Seu nome (opcional)
-      <input id="guestName" type="text" maxlength="80"
-             placeholder="Digite seu nome">
-    </label>
-
-    <div class="actions">
-      <button class="btn" id="yesBtn" type="button">
-        SIM, EU VOU! 🖤
-      </button>
-
-      <button class="btn secondary" id="noBtn" type="button">
-        NÃO VOU CONSEGUIR 😢
-      </button>
-    </div>
-
-    <p id="feedback" role="status" aria-live="polite"></p>
-
-    <p class="note">
-      O WhatsApp abrirá com a mensagem pronta.
-      Para concluir sua resposta, toque em “Enviar” no WhatsApp.
-      A mensagem não será enviada automaticamente.
-    </p>
-
-    <div class="divider"></div>
-
-    <p class="quote">“Você faz parte dessa história.”</p>
-    <p class="note">Prepare-se para atravessar os limites do comum.</p>
-  </div>
-</section>
+  </section>
 </main>
 
 <footer>
-  FEITO DE SOMBRAS, ESTRELAS E MAGIA ✦ HALLOWEEN MÍSTICO
+  <strong>🦇 HALLOWEEN MÍSTICO • 17 ANOS 🩸</strong>
   <br><br>
-  LUIZ EDUARDO • 17 ANOS
+  LUIZ EDUARDO
+  <br><br>
+  FEITO DE SOMBRAS, MAGIA, MISTÉRIO E UM TOQUE DE CAOS.
 </footer>
 
 <button class="music" id="musicBtn" type="button" aria-pressed="false">
@@ -502,60 +701,82 @@ footer {
 </button>
 
 <script>
-/* Estrelas animadas no fundo */
+/* Estrelas e partículas no fundo */
 (() => {
   const canvas = document.getElementById("stars");
   const ctx = canvas.getContext("2d");
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reducedMotion =
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   let stars = [];
   let width = 0;
   let height = 0;
-  let frame = 0;
+  let animationId = null;
 
   function resize() {
     const ratio = Math.min(window.devicePixelRatio || 1, 2);
+
     width = window.innerWidth;
     height = window.innerHeight;
+
     canvas.width = width * ratio;
     canvas.height = height * ratio;
     canvas.style.width = width + "px";
     canvas.style.height = height + "px";
+
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
 
-    const count = Math.min(120, Math.floor(width * height / 9000));
+    const count = Math.min(140, Math.floor(width * height / 7500));
+
     stars = Array.from({ length: count }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      size: Math.random() * 1.7 + .3,
-      alpha: Math.random() * .65 + .2,
-      speed: Math.random() * .25 + .04
+      size: Math.random() * 1.8 + .3,
+      alpha: Math.random() * .7 + .2,
+      speed: Math.random() * .35 + .05,
+      red: Math.random() > .65
     }));
+
+    if (animationId) cancelAnimationFrame(animationId);
     draw();
   }
 
   function draw() {
     ctx.clearRect(0, 0, width, height);
+
     stars.forEach(star => {
       ctx.beginPath();
-      ctx.fillStyle = `rgba(226, 204, 255, ${star.alpha})`;
+      ctx.fillStyle = star.red
+        ? `rgba(255, 35, 80, ${star.alpha})`
+        : `rgba(221, 184, 255, ${star.alpha})`;
+
+      ctx.shadowBlur = star.red ? 10 : 5;
+      ctx.shadowColor = star.red ? "#ff1744" : "#c16aff";
       ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
       ctx.fill();
+
       if (!reducedMotion) {
         star.y -= star.speed;
+
         if (star.y < -3) {
           star.y = height + 3;
           star.x = Math.random() * width;
         }
       }
     });
-    if (!reducedMotion) frame = requestAnimationFrame(draw);
+
+    ctx.shadowBlur = 0;
+
+    if (!reducedMotion) {
+      animationId = requestAnimationFrame(draw);
+    }
   }
 
   window.addEventListener("resize", resize);
   resize();
 })();
 
-/* Confirmação via WhatsApp */
+/* Confirmação de presença pelo WhatsApp */
 (() => {
   const phone = "5534991335673";
   const input = document.getElementById("guestName");
@@ -563,27 +784,33 @@ footer {
 
   function answer(isComing) {
     const name = input.value.trim();
+
     const greeting = name
       ? `Oi, Luiz Eduardo! Aqui é ${name}. `
       : "Oi, Luiz Eduardo! ";
 
     const message = isComing
-      ? `${greeting}Estou confirmando minha presença no seu aniversário de 17 anos! 🖤🔮`
+      ? `${greeting}Estou confirmando minha presença no seu aniversário de 17 anos, dia 17/10/2026! 🖤🦇🩸`
       : `${greeting}Infelizmente não vou conseguir comparecer ao seu aniversário de 17 anos. Obrigado pelo convite! 🖤`;
 
     feedback.textContent = isComing
-      ? "O WhatsApp vai abrir com sua confirmação. Envie a mensagem por lá para avisar o Luiz! 🖤"
-      : "O WhatsApp vai abrir com sua resposta. Envie a mensagem por lá para avisar o Luiz.";
+      ? "O WhatsApp vai abrir com sua confirmação. Toque em Enviar para avisar o Luiz! 🖤"
+      : "O WhatsApp vai abrir com sua resposta. Toque em Enviar para avisar o Luiz.";
 
-    const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+    const url =
+      "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+
     window.open(url, "_blank", "noopener,noreferrer");
   }
 
-  document.getElementById("yesBtn").addEventListener("click", () => answer(true));
-  document.getElementById("noBtn").addEventListener("click", () => answer(false));
+  document.getElementById("yesBtn")
+    .addEventListener("click", () => answer(true));
+
+  document.getElementById("noBtn")
+    .addEventListener("click", () => answer(false));
 })();
 
-/* Som ambiente opcional: só toca se o visitante ativar */
+/* Som ambiente opcional: só começa quando o visitante ativa */
 (() => {
   const button = document.getElementById("musicBtn");
   let audio = null;
@@ -597,18 +824,22 @@ footer {
       try { oscillator.stop(); } catch (error) {}
       oscillator = null;
     }
+
     if (lfo) {
       try { lfo.stop(); } catch (error) {}
       lfo = null;
     }
+
     if (gain) {
       try { gain.disconnect(); } catch (error) {}
       gain = null;
     }
+
     if (depth) {
       try { depth.disconnect(); } catch (error) {}
       depth = null;
     }
+
     button.textContent = "♫ Som: desligado";
     button.setAttribute("aria-pressed", "false");
   }
@@ -620,7 +851,9 @@ footer {
     }
 
     try {
-      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      const AudioContextClass =
+        window.AudioContext || window.webkitAudioContext;
+
       if (!AudioContextClass) {
         button.textContent = "Som indisponível";
         return;
@@ -635,14 +868,14 @@ footer {
 
       oscillator = audio.createOscillator();
       oscillator.type = "sine";
-      oscillator.frequency.value = 110;
+      oscillator.frequency.value = 75;
       oscillator.connect(gain);
       oscillator.start();
 
       lfo = audio.createOscillator();
       depth = audio.createGain();
       lfo.frequency.value = 0.12;
-      depth.gain.value = 18;
+      depth.gain.value = 15;
       lfo.connect(depth);
       depth.connect(oscillator.frequency);
       lfo.start();
@@ -656,5 +889,7 @@ footer {
   });
 })();
 </script>
+
 </body>
 </html>
+
